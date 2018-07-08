@@ -1,0 +1,8 @@
+port => 80
+bindAddress => ::
+webRoot => /absolute/path/to/your/web/root/www/
+charset => UTF-8
+timeout => 5000
+Using default controllers
+
+Server listening...

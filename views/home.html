@@ -1,0 +1,75 @@
+<style export="root">
+    .home-page{
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+    }
+
+    .home-main{
+        padding: 1em;
+    }
+
+    @media screen and (max-width:1024px) {
+        .home-page{
+            grid-template-columns: 1fr;
+        }
+    }
+    
+    #main-content h2,
+    #main-content h3,
+    #main-content h4,
+    #main-content h5,
+    #main-content h6{
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+    .hljs{
+        border: 1px solid #f1f1f1;
+    }
+</style>
+<div id="content" class="home-page">
+    <div></div>
+    <div id="main-content" class="home-main">
+
+    </div>
+    <div></div>
+</div>
+<script>
+    (async ()=>{
+        
+        const index = JSON.parse(await new GetHttpPromise("articles/index.json"));
+        foreach(index,(article,i)=>{
+            const item = create("div.menu-item",article.title);
+            menu.appendChild(item);
+            setOnRelease(item,async e=>{
+                menu.hide();
+                setContent(window["main-content"],article.uri);
+            });
+            if(i===0) release(item);
+        });
+
+
+        (function poll(){
+            foreach(document.getElementsByTagName("code"),async item=>{
+                if(!item.hasAttribute("highlighted")){
+                    if(item.hasAttribute("highlight")){
+                        let data;
+                        if(item.hasAttribute("src")){
+                            data = await new GetHttpPromise(item.getAttribute("src"));
+                        }else{
+                            data = item.innerText;
+                        }
+                        
+                        const language = item.getAttribute("highlight");
+                        
+                        item.classList.add(language);
+                        item.innerText = data;
+                        hljs.highlightBlock(item);
+                        item.setAttribute("highlighted","");
+                    }
+                }
+                
+            });
+            setTimeout(poll,100);
+        })();
+    })();
+</script>

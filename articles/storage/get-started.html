@@ -1,0 +1,96 @@
+<style>
+    #main-content #article-title{
+        position: relative;
+        display: inline-block;
+        top: -0.3em;
+        left: -0.7em;
+    }
+</style>
+<span style="font-size: 3.3em;" class="fa fa-cubes"></span>
+<h1 id="article-title">
+    Getting started
+</h1>
+<br />
+<br />
+<p>
+    First thing you need to download the most recent release.<br>
+    You can find all official releases at
+    <a target="_blank" href="https://github.com/tncrazvan/ElkServer/releases">
+        https://github.com/tncrazvan/ElkServer/releases
+    </a>
+</p>
+
+<p>Once you've downloaded the java archive, you can now start creating your web application.</p>
+
+<h2>Http.json</h2>
+
+<p>
+    Make a new file, named <b>http.json</b>.<br>
+    This file will be fed to the web server, it contains basic information about
+    your web server and your web application, like the character set your server should be using,
+    the port, binding address, ecc..
+</p>
+
+<p>
+    It's time to write down your server details inside <b>http.json</b>.
+</p>
+<pre><code highlight="javascript">{
+    "port":80,
+    "webRoot": "www/", //your website directory (relative to this json file)
+    "charset": "UTF-8",
+    "timeout": 5000,
+    "bindAddress": "::" // :: means the server will bind on all available addresses
+}</code></pre>
+
+<p>
+    Most of the file contains generic information, I'm going to asume that you are familiar with Socket technology
+    and  you understand what many of the fields mean.
+</p>
+
+<h2>Web Controllers</h2>
+<p>
+    Controllers, as in 
+    <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">Model-View-Controller (MVC)</a>, 
+    are the main request managers for you web application.<br>
+    We haven't wrote any code yet, however, there are a few controllers set by default, such as <b>ControllerNotFound</b>, which triggers when
+    a given resource is not found on the server.
+</p>
+
+<p>
+    In order for the web server to know where to find these controllers, the http.json file needs to specify the exact package
+    in which they exist.
+</p>
+
+<p>
+    In this case, we are not importing the java archive in a customized project, we are instead
+    directly using it as a standalone project, so we don't need to define any package for http and web socket controllers, 
+    instead the default packages will be used.
+</p>
+
+
+<h2>Index.html</h2>
+
+<p>
+    Make a new directory named <b>www/</b> and make a new file <b>www/index.html</b>.<br>
+    This file will be your application entry point, so throw your html template inside it.
+</p>
+
+<pre><code highlight="html" src="articles/storage/index.html"></code></pre>
+
+<h2>Start the web server</h2>
+
+<p>
+    Everything is ready, you can start your server now.
+    Make sure your Java Environment is installed, and run your server.
+</p>
+
+<pre><code highlight="bash">java -jar ElkServer-1.0.0.jar http.json</code></pre>
+
+<p>
+    You should get an output similar to this
+</p>
+
+<pre><code highlight="bash" src="articles/storage/output.elk"></code></pre>
+<br />
+<br />
+<br />

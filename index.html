@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script src="js/Elk/Main.js"></script>
+        <title>Local</title>
+        <link rel="manifest" href="manifest.json">
+    </head>
+    <body>
+        <div id="root"></div>
+        <script>
+            (async ()=>{
+                await use.css("highlighter/atom-one-light");
+                await use.css("@https://use.fontawesome.com/releases/v5.1.0/css/all.css");
+                await use.css("google-fonts/roboto");
+                await use.css("text");
+                await use.css("colors/colors");
+                await use.css("dimensions/dimensions");
+                await use.css("spinners/rect");
+                await use.css("states");
+
+                await use.js("highlighter/highlight.pack");
+                hljs.initHighlightingOnLoad();
+                await use.js("Elk/swipe");
+                await use.js("tools");
+
+                await use.component("top-menu");
+                await use.component("menu");
+                await use.component("bottom");
+                await use.component("main");
+                await use.component("shadow");
+            })();
+        </script>
+    </body>
+</html>

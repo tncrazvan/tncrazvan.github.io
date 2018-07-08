@@ -1,0 +1,122 @@
+<style export="root">
+    #menu{
+        background: #17141f;
+        color: #d1d0d2;
+        z-index: 3;
+    }
+    .menu-item{
+        position: relative;
+        margin-left: 3em;
+        margin-right: 3em;
+        display: block;
+        padding: 1em;
+        cursor: pointer;
+        border-bottom: 1px solid transparent;
+
+        transition: background 200ms, transform 200ms;
+        -webkit-transition: background 200ms, transform 200ms;
+        -moz-transition: background 200ms, transform 200ms;
+        -ms-transition: background 200ms, transform 200ms;
+        -o-transition: background 200ms, transform 200ms;
+    }
+
+    .menu-item:first-child{
+        margin: 0;
+    }
+
+    .menu-item *{
+        font-size: 1em;
+    }
+    .menu-item:hover{
+        background: #2e283e;
+    }
+    .menu-item:active{
+        transform: scale(0.95);
+        -webkit-transform: scale(0.95);
+        -o-transform: scale(0.95);
+        -moz-transform: scale(0.95);
+        -ms-transform: scale(0.95);
+    }
+    #close-menu{
+        float: right;
+    }
+    #close-menu .fa{
+        margin-left: 0.3em;
+    }
+</style>
+
+<div id="menu" export="root">
+    <div id="close-menu" class="menu-item">
+        <span class="fa fa-times"></span>
+    </div>
+    <br /><br />
+    <div id="download" class="menu-item">
+        <span class="fa fa-box"></span>
+        Download
+    </div>
+    <div id="view-source-code" class="menu-item">
+        <span class="fa fa-box-open"></span>
+        View source code
+    </div>
+</div>
+
+<script>
+    menu.onload=async e=>{
+        if(hasTouch()){
+            swipe.setLeftMenu(menu,30,Percent(100));
+        }else{
+            swipe.setLeftMenu(menu,30,"22em");
+        }
+        
+        menu.toggle=(speed=30)=>{
+            return toggleLeftMenu(menu,speed);
+        };
+        menu.hide=(speed=30)=>{
+            return new Promise(async resolve=>{
+                await hideLeftMenu(menu,speed);
+                menu.style.zIndex = 0;
+                (resolve)();
+            });
+        };
+        menu.show=(speed=30)=>{
+            menu.style.zIndex = 3;
+            return showLeftMenu(menu,speed);
+        };
+        
+        
+        swipe.onLeftMenuMove=x=>{
+            let max = -menu.offsetWidth;
+            x += -max;
+
+            window["top-menu"].style.left=Pixel(x);
+            window["bottom"].style.left=Pixel(x);
+            //window["main"].style.left=Pixel(x);
+
+            x = (x/-max).truncate(2);
+            if(x === 0){
+                window["shadow"].style.display = "none";
+            }else{
+                window["shadow"].style.display = "block";
+            }
+            window["shadow"].style.opacity = x;
+        };
+
+        setOnRelease(window["close-menu"],e=>{
+            menu.hide();
+        });
+
+        setOnRelease(window["download"],e=>{
+            const a = create("a");
+            a.setAttribute("target","_blank");
+            a.setAttribute("href","https://github.com/tncrazvan/ElkServer/releases");
+            a.click();
+        });
+
+        setOnRelease(window["view-source-code"],e=>{
+            const a = create("a");
+            a.setAttribute("target","_blank");
+            a.setAttribute("href","https://github.com/tncrazvan/ElkServer");
+            a.click();
+        });
+    };
+</script>

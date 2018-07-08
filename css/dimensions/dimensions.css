@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.btn{
+    padding: 1em;
+    border: 0;
+
+    transition: background 200ms, transform 200ms;
+    -webkit-transition: background 200ms, transform 200ms;
+    -moz-transition: background 200ms, transform 200ms;
+    -ms-transition: background 200ms, transform 200ms;
+    -o-transition: background 200ms, transform 200ms;
+}
+
+.fa{
+    margin-right: 0.5em;
+}
+
+.btn{
+    cursor: pointer;
+}

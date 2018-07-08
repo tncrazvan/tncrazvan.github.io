@@ -1,0 +1,14 @@
+[
+    {
+        "title":"<span class='fa fa-book'></span>introduction to ElkServer",
+        "uri":"articles/storage/intro.html"
+    },
+    {
+        "title":"<span class='fa fa-cube'></span>Get Started",
+        "uri":"articles/storage/get-started.html"
+    },
+    {
+        "title":"<span class='fa fa-podcast'></span>Websocket Groups",
+        "uri":"articles/storage/websocket-groups.html"
+    }
+]

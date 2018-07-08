@@ -1,0 +1,31 @@
+html,body,#root,#main{
+    overscroll-behavior: contain;
+}
+
+.animated-pop{
+    transition: transform 200ms, opacity 200ms;
+    -webkit-transition: transform 200ms, opacity 200ms;
+    -moz-transition: transform 200ms, opacity 200ms;
+    -ms-transition: transform 200ms, opacity 200ms;
+    -o-transition: transform 200ms, opacity 200ms;
+}
+
+.hide-pop{
+    display: block;
+    opacity: 0;
+    transform: scale(0.1);
+    -webkit-transform: scale(0.1);
+    -moz-transform: scale(0.1);
+    -ms-transform: scale(0.1);
+    -o-transform: scale(0.1);
+}
+
+.show-pop{
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+}
