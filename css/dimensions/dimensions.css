@@ -3,9 +3,20 @@
     padding: 0;
 }
 
+.fa{
+    margin-right: 0.5em;
+}
+
 .btn{
+    cursor: pointer;
+}
+
+.btn{
+    position: relative;
+    margin-left: 3em;
+    margin-right: 3em;
     padding: 1em;
-    border: 0;
+    cursor: pointer;
 
     transition: background 200ms, transform 200ms;
     -webkit-transition: background 200ms, transform 200ms;
@@ -14,10 +25,15 @@
     -o-transition: background 200ms, transform 200ms;
 }
 
-.fa{
-    margin-right: 0.5em;
+.btn *,.btn{
+    font-size: 1em;
+    font-weight: bolder;
 }
 
-.btn{
-    cursor: pointer;
+.btn:active{
+    transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+    -o-transform: scale(0.95);
+    -moz-transform: scale(0.95);
+    -ms-transform: scale(0.95);
 }

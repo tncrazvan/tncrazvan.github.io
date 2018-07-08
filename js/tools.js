@@ -78,7 +78,6 @@ async function setContent(element,uri){
     const content = await new GetHttpPromise(uri);
     element.applyHtml(content);
     await showContent(element);
-    console.log("test");
 }
 
 async function setView(name){

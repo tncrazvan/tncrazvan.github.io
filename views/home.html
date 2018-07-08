@@ -35,7 +35,6 @@
 </div>
 <script>
     (async ()=>{
-        
         const index = JSON.parse(await new GetHttpPromise("articles/index.json"));
         foreach(index,(article,i)=>{
             const item = create("div.menu-item",article.title);

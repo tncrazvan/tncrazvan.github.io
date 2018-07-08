@@ -1,6 +1,7 @@
 .btn{
     background: transparent;
     color: #2e283e;
+    border: 1px solid #2e283e;
 }
 .btn:hover{
     background: #2e283e;
