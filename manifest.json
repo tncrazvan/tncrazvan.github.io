@@ -2,7 +2,7 @@
   "name": "Elk Server",
   "short_name": "Elk",
   "start_url": ".",
-  "orientation": "landscape-primary",
+  "orientation": "any",
   "display": "standalone",
   "description": "ElkServer is a Java library which offers a few tools which (hopefuly) will help you create your own customized web server.",
   "theme_color": "#17141f",
