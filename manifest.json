@@ -1,10 +1,10 @@
 {
-  "name": "localhost",
-  "short_name": "local",
+  "name": "Elk Server",
+  "short_name": "Elk",
   "start_url": ".",
   "orientation": "landscape-primary",
   "display": "standalone",
-  "description": "A simple quiz builder and manager app.",
+  "description": "ElkServer is a Java library which offers a few tools which (hopefuly) will help you create your own customized web server.",
   "theme_color": "#17141f",
   "background_color": "#17141f"
 }
