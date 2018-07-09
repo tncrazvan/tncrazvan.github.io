@@ -93,4 +93,33 @@
 <pre><code highlight="bash" src="articles/storage/output.elk"></code></pre>
 <br />
 <br />
+<style>
+    #next-doc{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        text-align: center;
+    }
+    @media screen and (max-width: 1024px) {
+        #next-doc{
+            grid-template-columns: 1fr 15fr 1fr;
+        }
+    }
+    
+</style>
+<div id="next-doc">
+    <div></div>
+    <div id="websocket-groups" class="btn">Websocket groups</div>
+    <div></div>
+</div>
 <br />
+<br />
+<br />
+<script>
+    (()=>{
+        setOnRelease(window["websocket-groups"],async e=>{
+            menu.hide();
+            await setContent(window["main-content"],"articles/storage/websocket-groups.html");
+            main.scrollTop = 0;
+        });
+    })();
+</script>
