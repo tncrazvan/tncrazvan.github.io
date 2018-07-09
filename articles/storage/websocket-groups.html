@@ -34,7 +34,7 @@
     <li>
         <span class="fa fa-circle"></span>
         <p>
-            Each group must be generated through the provided API, which will assign a unique id to the group itself..<br>
+            Each group must be generated through the provided API, which will assign an unique id to the group itself.<br>
             <small>
                 The api is located at <a target="_blank" href="/@Set/webSocketGroup"><u>/@Set/webSocketGroup</u></a>.<br>
                 If web socket groups are enabled, the server will respond with the id of the created web socket.
@@ -71,16 +71,16 @@
 
 <p>
     As I mentioned above, you can create a web socket group through the <b>/@Set/webSocketGroup</b> API.<br>
-    The request can be either a GET or a POST request, the server won't parse any data pased to it (as for now), 
-    it will simply create a group, assign it an id based on your session id, save it in memory, and return the id to the client.
+    The request can be either a GET or a POST request.
+    The server will create a group, assign it an unique id based on your session id, a visibility state and a name based on the parameters given.
+    The group will be saveed in memory, and the unique id of the group will be sent back to the client through http as a response to the request.
 </p>
 
 <pre><code highlight="javascript">async function createGroup(name){
     const req = await fetch("/@Set/webSocketGroup?visibility=1&name="+name);
     const text = req.text();
     return text;
-}
-</code></pre>
+}</code></pre>
 
 <p>
     This function will create a group and return its id.<br />
