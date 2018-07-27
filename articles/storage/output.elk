@@ -1,8 +1,13 @@
-port => 80
-bindAddress => ::
-webRoot => /absolute/path/to/your/web/root/www/
-charset => UTF-8
-timeout => 5000
-Using default controllers
++-----------------------------------------------------------------------------------+
+|                                      Socket                                       |
++-----------------+-----------------------------------------------------------------+
+| Attribute       | Value                                                           |
++-----------------+-----------------------------------------------------------------+
+| port            | 80                                                              |
+| bind address    | ::                                                              |
+| web root        | /path/to/your/website/                                          |
+| charset         | UTF-8                                                           |
+| timeout (ms)    | 3000                                                            |
++-----------------+-----------------------------------------------------------------+
 
-Server listening...
+Server started.
