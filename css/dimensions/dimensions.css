@@ -37,3 +37,10 @@
     -moz-transform: scale(0.95);
     -ms-transform: scale(0.95);
 }
+
+#main{
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}

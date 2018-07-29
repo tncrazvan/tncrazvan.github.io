@@ -90,7 +90,7 @@ let webroot = new Includer({
 
 async function setContent(target,uri){
     return new Promise(async resolve=>{
-        target.className = "home-main animated-pop hide-pop";
+        target.className = "animated-pop hide-pop";
         let contents = (await new GetHttpPromise(uri)).response;
         let canShow = false;
         setTimeout(()=>{
@@ -100,7 +100,7 @@ async function setContent(target,uri){
             if(!canShow) setTimeout(poll,10);
             else{
                 target.applyHtml(contents);
-                target.className = "home-main animated-pop show-pop";
+                target.className = "animated-pop show-pop";
                 (resolve)();
             }
         })();
