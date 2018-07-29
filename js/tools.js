@@ -96,11 +96,12 @@ async function setContent(target,uri){
         setTimeout(()=>{
             canShow = true;
         },200);
-        (function poll(){
+        (async function poll(){
             if(!canShow) setTimeout(poll,10);
             else{
                 target.applyHtml(contents);
                 target.className = "animated-pop show-pop";
+                await menu.hide();
                 (resolve)();
             }
         })();

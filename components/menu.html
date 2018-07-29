@@ -86,13 +86,13 @@
 
         window["top-menu"].style.left=Pixel(x);
         window["bottom"].style.left=Pixel(x);
-        window["main"].style.left=Pixel(x);
+        //window["main"].style.left=Pixel(x);
 
         x = (x/-max).truncate(2);
         if(x === 0){
             window["shadow"].style.display = "none";
         }else{
-            //window["shadow"].style.display = "block";
+            window["shadow"].style.display = "block";
         }
         window["shadow"].style.opacity = x;
     };
