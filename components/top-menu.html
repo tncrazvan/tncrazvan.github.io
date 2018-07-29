@@ -55,7 +55,7 @@
 <script>
     setOnRelease(window["toggle-menu"],e=>{
         e.preventDefault();
-        menu.show();
+        menu.toggle();
         window["bars-icon"].style.transform = "rotate(0deg)";
     });
     setOnPress(window["toggle-menu"],e=>{

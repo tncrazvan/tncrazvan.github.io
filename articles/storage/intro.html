@@ -103,7 +103,9 @@
 <script>
     (()=>{
         setOnRelease(window["get-started-now"],async e=>{
-            menu.hide();
+            if(document.body.offsetWidth < 980){
+                menu.hide();
+            }
             await setContent(articles,"articles/storage/get-started.html");
             main.scrollTop = 0;
         });

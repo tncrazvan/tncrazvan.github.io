@@ -117,7 +117,9 @@
 <script>
     (()=>{
         setOnRelease(window["websocket-groups"],async e=>{
-            menu.hide();
+            if(document.body.offsetWidth < 980){
+                menu.hide();
+            }
             await setContent(articles,"articles/storage/websocket-groups.html");
             main.scrollTop = 0;
         });

@@ -46,9 +46,6 @@
 </style>
 
 <div id="menu" export="root">
-    <div id="close-menu" class="menu-item">
-        <span class="fa fa-times"></span>
-    </div>
     <br /><br />
     <div id="download" class="menu-item">
         <span class="fa fa-box"></span>
@@ -99,10 +96,6 @@
         }
         window["shadow"].style.opacity = x;
     };
-
-    setOnRelease(window["close-menu"],e=>{
-        menu.hide();
-    });
 
     setOnRelease(window["download"],e=>{
         const a = create("a");

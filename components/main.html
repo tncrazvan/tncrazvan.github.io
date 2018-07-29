@@ -17,5 +17,8 @@
     (async ()=>{
         main.style.paddingTop = Pixel(window["top-menu"].offsetTop+window["top-menu"].offsetHeight);
         await setView("home");
+        if(document.body.offsetWidth >= 980){
+            await menu.show();
+        }
     })();
 </script>

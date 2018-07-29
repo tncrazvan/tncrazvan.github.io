@@ -41,7 +41,9 @@
             const item = create("div.menu-item",article.title);
             menu.appendChild(item);
             setOnRelease(item,async e=>{
-                menu.hide();
+                if(document.body.offsetWidth < 980){
+                    menu.hide();
+                }
                 await setContent(articles,article.uri);
             });
             if(i===0) release(item);
