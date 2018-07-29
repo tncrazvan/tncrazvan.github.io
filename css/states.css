@@ -1,6 +1,5 @@
 html,body,#root,#main{
     overscroll-behavior: contain;
-    overflow-x: hidden;
 }
 
 .animated-pop{

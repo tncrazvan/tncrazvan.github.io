@@ -70,12 +70,10 @@
     menu.hide=(speed=30)=>{
         return new Promise(async resolve=>{
             await hideLeftMenu(menu,speed);
-            menu.style.zIndex = 0;
             (resolve)();
         });
     };
     menu.show=(speed=30)=>{
-        menu.style.zIndex = 3;
         return showLeftMenu(menu,speed);
     };
     

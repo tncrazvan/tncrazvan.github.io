@@ -101,7 +101,6 @@ async function setContent(target,uri){
             else{
                 target.applyHtml(contents);
                 target.className = "animated-pop show-pop";
-                await menu.hide();
                 (resolve)();
             }
         })();
