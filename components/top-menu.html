@@ -53,21 +53,19 @@
     </div>
 </div>
 <script>
-    window["top-menu"].onload=e=>{
-        setOnRelease(window["toggle-menu"],e=>{
-            e.preventDefault();
-            menu.show();
-            window["bars-icon"].style.transform = "rotate(0deg)";
-        });
-        setOnPress(window["toggle-menu"],e=>{
-            e.preventDefault();
-            window["bars-icon"].style.transform = "rotate(360deg)";
-        });
-        /*window["top-menu"].addEventListener("mouseover",e=>{
-            window["bars-icon"].style.transform = "rotate(180deg)";
-        },false);*/
-        /*window["top-menu"].addEventListener("mouseout",e=>{
-            window["bars-icon"].style.transform = "rotate(0deg)";
-        },false);*/
-    };
+    setOnRelease(window["toggle-menu"],e=>{
+        e.preventDefault();
+        menu.show();
+        window["bars-icon"].style.transform = "rotate(0deg)";
+    });
+    setOnPress(window["toggle-menu"],e=>{
+        e.preventDefault();
+        window["bars-icon"].style.transform = "rotate(360deg)";
+    });
+    /*window["top-menu"].addEventListener("mouseover",e=>{
+        window["bars-icon"].style.transform = "rotate(180deg)";
+    },false);*/
+    /*window["top-menu"].addEventListener("mouseout",e=>{
+        window["bars-icon"].style.transform = "rotate(0deg)";
+    },false);*/
 </script>

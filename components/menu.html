@@ -61,62 +61,60 @@
 </div>
 
 <script>
-    menu.onload=async e=>{
-        if(hasTouch()){
-            swipe.setLeftMenu(menu,30,Percent(100));
-        }else{
-            swipe.setLeftMenu(menu,30,"22em");
-        }
-        
-        menu.toggle=(speed=30)=>{
-            return toggleLeftMenu(menu,speed);
-        };
-        menu.hide=(speed=30)=>{
-            return new Promise(async resolve=>{
-                await hideLeftMenu(menu,speed);
-                menu.style.zIndex = 0;
-                (resolve)();
-            });
-        };
-        menu.show=(speed=30)=>{
-            menu.style.zIndex = 3;
-            return showLeftMenu(menu,speed);
-        };
-        
-        
-        swipe.onLeftMenuMove=x=>{
-            let max = -menu.offsetWidth;
-            x += -max;
-
-            window["top-menu"].style.left=Pixel(x);
-            window["bottom"].style.left=Pixel(x);
-            window["main"].style.left=Pixel(x);
-
-            x = (x/-max).truncate(2);
-            if(x === 0){
-                window["shadow"].style.display = "none";
-            }else{
-                //window["shadow"].style.display = "block";
-            }
-            window["shadow"].style.opacity = x;
-        };
-
-        setOnRelease(window["close-menu"],e=>{
-            menu.hide();
-        });
-
-        setOnRelease(window["download"],e=>{
-            const a = create("a");
-            a.setAttribute("target","_blank");
-            a.setAttribute("href","https://github.com/tncrazvan/ElkServer/releases");
-            a.click();
-        });
-
-        setOnRelease(window["view-source-code"],e=>{
-            const a = create("a");
-            a.setAttribute("target","_blank");
-            a.setAttribute("href","https://github.com/tncrazvan/ElkServer");
-            a.click();
+    if(hasTouch()){
+        swipe.setLeftMenu(menu,30,Percent(100));
+    }else{
+        swipe.setLeftMenu(menu,30,"22em");
+    }
+    
+    menu.toggle=(speed=30)=>{
+        return toggleLeftMenu(menu,speed);
+    };
+    menu.hide=(speed=30)=>{
+        return new Promise(async resolve=>{
+            await hideLeftMenu(menu,speed);
+            menu.style.zIndex = 0;
+            (resolve)();
         });
     };
+    menu.show=(speed=30)=>{
+        menu.style.zIndex = 3;
+        return showLeftMenu(menu,speed);
+    };
+    
+    
+    swipe.onLeftMenuMove=x=>{
+        let max = -menu.offsetWidth;
+        x += -max;
+
+        window["top-menu"].style.left=Pixel(x);
+        window["bottom"].style.left=Pixel(x);
+        window["main"].style.left=Pixel(x);
+
+        x = (x/-max).truncate(2);
+        if(x === 0){
+            window["shadow"].style.display = "none";
+        }else{
+            //window["shadow"].style.display = "block";
+        }
+        window["shadow"].style.opacity = x;
+    };
+
+    setOnRelease(window["close-menu"],e=>{
+        menu.hide();
+    });
+
+    setOnRelease(window["download"],e=>{
+        const a = create("a");
+        a.setAttribute("target","_blank");
+        a.setAttribute("href","https://github.com/tncrazvan/ElkServer/releases");
+        a.click();
+    });
+
+    setOnRelease(window["view-source-code"],e=>{
+        const a = create("a");
+        a.setAttribute("target","_blank");
+        a.setAttribute("href","https://github.com/tncrazvan/ElkServer");
+        a.click();
+    });
 </script>

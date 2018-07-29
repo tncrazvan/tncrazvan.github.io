@@ -1,7 +1,8 @@
-<style export="root">
+<style>
     .home-page{
         display: grid;
-        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-columns: 1fr 5fr 1fr;
+        grid-column-start: 2;
     }
 
     .home-main{
@@ -14,11 +15,11 @@
         }
     }
     
-    #main-content h2,
-    #main-content h3,
-    #main-content h4,
-    #main-content h5,
-    #main-content h6{
+    #articles h2,
+    #articles h3,
+    #articles h4,
+    #articles h5,
+    #articles h6{
         margin-top: 1em;
         margin-bottom: 1em;
     }
@@ -26,45 +27,44 @@
         border: 1px solid #f1f1f1;
     }
 </style>
-<div id="content" class="home-page">
+<div id="content" class="home-page" export="main">
     <div></div>
-    <div id="main-content" class="home-main">
+    <div id="articles" class="home-main animated-pop">
 
     </div>
     <div></div>
 </div>
 <script>
     (async ()=>{
-        const index = JSON.parse(await new GetHttpPromise("articles/index.json"));
+        const index = JSON.parse((await new GetHttpPromise("articles/index.json")).response);
         foreach(index,(article,i)=>{
             const item = create("div.menu-item",article.title);
             menu.appendChild(item);
             setOnRelease(item,async e=>{
                 menu.hide();
-                setContent(window["main-content"],article.uri);
+                await setContent(articles,article.uri);
             });
             if(i===0) release(item);
         });
 
 
-        (function poll(){
-            foreach(document.getElementsByTagName("code"),async item=>{
-                if(!item.hasAttribute("highlighted")){
-                    if(item.hasAttribute("highlight")){
-                        let data;
-                        if(item.hasAttribute("src")){
-                            data = await new GetHttpPromise(item.getAttribute("src"));
-                        }else{
-                            data = item.innerText;
-                        }
+        (async function poll(){
+            await foreach(document.getElementsByTagName("code"),async item=>{
+                if(!item.hasAttribute("highlighted") && item.hasAttribute("highlight")){
+                    let data;
+                    if(item.hasAttribute("src")){
+                        let request = await new GetHttpPromise(item.getAttribute("src"));
+                        data = request.response;
                         
-                        const language = item.getAttribute("highlight");
-                        
-                        item.classList.add(language);
-                        item.innerText = data;
-                        hljs.highlightBlock(item);
-                        item.setAttribute("highlighted","");
+                    }else{
+                        data = item.innerText;
                     }
+                    const language = item.getAttribute("highlight");
+                    
+                    item.classList.add(language);
+                    item.innerText = data;
+                    hljs.highlightBlock(item);
+                    item.setAttribute("highlighted","");
                 }
                 
             });

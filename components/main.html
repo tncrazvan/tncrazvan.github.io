@@ -14,8 +14,8 @@
 
 <div id="main" class="animated-pop hide-pop" export="root"></div>
 <script>
-    main.onload=e=>{
+    (async ()=>{
         main.style.paddingTop = Pixel(window["top-menu"].offsetTop+window["top-menu"].offsetHeight);
-        setView("home");
-    };
+        await setView("home");
+    })();
 </script>

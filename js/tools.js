@@ -1,3 +1,12 @@
+function hasTouch() {  
+    try {  
+      document.createEvent("TouchEvent");  
+      return true;  
+    } catch (e) {  
+      return false;  
+    }  
+  }
+
 function triggerMouseEvent (node, eventType) {
     var clickEvent = document.createEvent ('MouseEvent');
     clickEvent.initEvent (eventType, true, true);
@@ -73,15 +82,34 @@ function setOnPress(element,f){
     }
 }
 
-async function setContent(element,uri){
-    await hideContent(element);
-    const content = await new GetHttpPromise(uri);
-    element.applyHtml(content);
-    await showContent(element);
+let webroot = new Includer({
+    "css":"css",
+    "js":"js",
+    "components":"."
+});
+
+async function setContent(target,uri){
+    return new Promise(async resolve=>{
+        let contents = (await new GetHttpPromise(uri)).response;
+        target.className = "home-main animated-pop hide-pop";
+        let canShow = false;
+        setTimeout(()=>{
+            canShow = true;
+        },200);
+        (function poll(){
+            if(!canShow) setTimeout(poll,10);
+            else{
+                target.applyHtml(contents);
+                target.className = "home-main animated-pop show-pop";
+                (resolve)();
+            }
+        })();
+    });
+    
 }
 
-async function setView(name){
-    return setContent(main,"/views/"+name+".html");
+function setView(uri){
+    return setContent(main,"views/"+uri+".html");
 }
 
 function Spinner(){
