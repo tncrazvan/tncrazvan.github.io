@@ -50,7 +50,7 @@
     In order to enable it, you need to specify some fields in your <b>http.json</b> file.
 </p>
 
-<pre><code highlight="javascript">{
+<pre highlight="javascript">{
     "port":80,
     "webRoot": "www/", //your website directory (relative to this json file)
     "charset": "UTF-8",
@@ -60,7 +60,7 @@
     "groups":{
         "allow":true
     }
-}</code></pre>
+}</pre>
 
 <p>
     The field <b>groups</b>, specifies information about your ws groups.<br>
@@ -76,11 +76,11 @@
     The group will be saveed in memory, and the unique id of the group will be sent back to the client through http as a response to the request.
 </p>
 
-<pre><code highlight="javascript">async function createGroup(name){
+<pre highlight="javascript">async function createGroup(name){
     const req = await fetch("/@Set/webSocketGroup?visibility=1&name="+name);
     const text = req.text();
     return text;
-}</code></pre>
+}</pre>
 
 <p>
     This function will create a group and return its id.<br />
@@ -93,7 +93,7 @@
     <b>/@WebSocketGroupApplicationProgramInterface?join=<u>{id}</u></b>
 </p>
 
-<pre><code highlight="javascript">function joinGroup(groupId){
+<pre highlight="javascript">function joinGroup(groupId){
     return new Promise(function(resolve,reject){
         //connect to the api and provide your group id
         const group = new WebSocket("ws://"+location.host+"/@WebSocketGroupApplicationProgramInterface?join="+groupId);
@@ -112,11 +112,11 @@
             console.log("Connection closed");
         });
     });
-}</code></pre>
+}</pre>
 
 <p>
     Let's write a simple example, a web chat application with different groups.<br>
     Users can create their own public group to chat with others, and they are free to switch between groups.
 </p>
 
-<pre><code highlight="html" src="articles/storage/groups.html"></code></pre>
+<pre highlight="html" src="articles/storage/groups.html"></pre>

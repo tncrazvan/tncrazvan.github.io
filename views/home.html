@@ -1,18 +1,20 @@
 <style>
-    #articles{
-        padding: 1em;
-    }
-
-    .home-page{
+    #content{
         display: grid;
         grid-template-columns: 1fr 2fr 1fr;
     }
 
     @media screen and (max-width:1024px) {
-        .home-page{
+        #content{
             grid-template-columns: 1fr;
         }
     }
+    
+    #articles{
+        padding: 1em;
+    }
+
+    
     
     #articles h2,
     #articles h3,
@@ -50,7 +52,7 @@
 
 
         (async function poll(){
-            await foreach(document.getElementsByTagName("code"),async item=>{
+            await foreach(document.getElementsByTagName("pre"),async item=>{
                 if(!item.hasAttribute("highlighted") && item.hasAttribute("highlight")){
                     let data;
                     if(item.hasAttribute("src")){
@@ -68,6 +70,7 @@
                     item.setAttribute("highlighted","");
                 }
                 
+                item.style.maxWidth=Pixel(main.offsetWidth-50);
             });
             setTimeout(poll,100);
         })();

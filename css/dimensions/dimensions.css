@@ -45,8 +45,6 @@
     bottom: 0;
 }
 
-@media screen and (max-width: 1024px) {
-    .hljs{
-        max-width: 500px;
-    }
+.hljs{
+    max-width: 55%;
 }
