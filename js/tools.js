@@ -90,8 +90,8 @@ let webroot = new Includer({
 
 async function setContent(target,uri){
     return new Promise(async resolve=>{
-        let contents = (await new GetHttpPromise(uri)).response;
         target.className = "home-main animated-pop hide-pop";
+        let contents = (await new GetHttpPromise(uri)).response;
         let canShow = false;
         setTimeout(()=>{
             canShow = true;
