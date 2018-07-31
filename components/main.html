@@ -1,22 +1,25 @@
-<style>
-    #main{
-        position: fixed;
-        z-index: 0;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        overflow-y: auto;
+<div id="main-wrapper" export="root">
+    <style>
+        #main{
+            position: fixed;
+            z-index: 0;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            overflow-y: auto;
+            
+            background: #ffffff;
+        }
         
-        background: #ffffff;
-    }
-    
-</style>
+    </style>
+    <div id="main" class="animated-pop hide-pop"></div>
+    <script>
+        (async ()=>{
+            console.log("aqwreqwr");
+            main.style.paddingTop = Pixel(window["top-menu"].offsetTop+window["top-menu"].offsetHeight);
+            await setView("home");
+        })();
+    </script>
+</div>
 
-<div id="main" class="animated-pop hide-pop" export="root"></div>
-<script>
-    (async ()=>{
-        main.style.paddingTop = Pixel(window["top-menu"].offsetTop+window["top-menu"].offsetHeight);
-        await setView("home");
-    })();
-</script>
