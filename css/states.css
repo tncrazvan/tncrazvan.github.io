@@ -2,6 +2,23 @@ html,body,#root,#main{
     overscroll-behavior: contain;
 }
 
+.fade{
+    transition: opacity 200ms !important;
+    -webkit-transition: opacity 200ms !important;
+    -moz-transition: opacity 200ms !important;
+    -ms-transition: opacity 200ms !important;
+    -o-transition: opacity 200ms !important;
+}
+
+.fade.out{
+    display: none;
+    opacity: 0;
+}
+.fade.in{
+    display: block;
+    opacity: 1;
+}
+
 .animated-pop{
     transition: transform 200ms, opacity 200ms;
     -webkit-transition: transform 200ms, opacity 200ms;

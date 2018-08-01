@@ -48,6 +48,10 @@
                         window["top-menu"].style.left=Pixel(menu.offsetLeft+menu.offsetWidth);
                     }
                     await setContent(articles,article.uri);
+                    setTimeout(()=>{
+                        root.style.opacity=1;
+                    });
+                    
                 });
                 if(i===0) release(item);
             });
