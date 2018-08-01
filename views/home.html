@@ -44,6 +44,8 @@
                 setOnRelease(item,async e=>{
                     if(document.body.offsetWidth < 980){
                         menu.hide();
+                    }else{
+                        window["top-menu"].style.left=Pixel(menu.offsetLeft+menu.offsetWidth);
                     }
                     await setContent(articles,article.uri);
                 });
