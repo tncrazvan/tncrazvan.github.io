@@ -42,11 +42,12 @@
                 const item = create("div.menu-item",article.title);
                 menu.appendChild(item);
                 setOnRelease(item,async e=>{
-                    if(document.body.offsetWidth < 980){
+                    /*if(document.body.offsetWidth < 980){
                         menu.hide();
                     }else{
                         window["top-menu"].style.left=Pixel(menu.offsetLeft+menu.offsetWidth);
-                    }
+                    }*/
+                    menu.hide();
                     await setContent(articles,article.uri);
                     setTimeout(()=>{
                         root.style.opacity=1;
