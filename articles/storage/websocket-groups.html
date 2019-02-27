@@ -26,7 +26,7 @@
                 <span class="fa fa-angle-right"></span>
                 This means that groups are volatile, so once the server shuts down, all groups are lost.<br />
                 <span class="fa fa-angle-right"></span>
-                Each group's pointer is held inside a 
+                Each group's pointer is held inside a
                 <a target="_blank" href="https://docs.oracle.com/javase/7/docs/api/java/util/Map.html"><u>Map&lt;String,WebSocketGroup&gt;</u></a>
             </small>
         </p>
@@ -50,17 +50,7 @@
     In order to enable it, you need to specify some fields in your <b>http.json</b> file.
 </p>
 
-<pre highlight="javascript">{
-    "port":80,
-    "webRoot": "www/", //your website directory (relative to this json file)
-    "charset": "UTF-8",
-    "timeout": 5000,
-    "bindAddress": "::", // :: means the server will bind on all available addresses
-
-    "groups":{
-        "allow":true
-    }
-}</pre>
+<pre highlight="json" src="articles/storage/files/http1.json"></pre>
 
 <p>
     The field <b>groups</b>, specifies information about your ws groups.<br>
@@ -76,11 +66,7 @@
     The group will be saveed in memory, and the unique id of the group will be sent back to the client through http as a response to the request.
 </p>
 
-<pre highlight="javascript">async function createGroup(name){
-    const req = await fetch("/@Set/webSocketGroup?visibility=1&name="+name);
-    const text = req.text();
-    return text;
-}</pre>
+<pre highlight="javascript" src="articles/storage/files/createGroup.js"></pre>
 
 <p>
     This function will create a group and return its id.<br />
@@ -93,30 +79,10 @@
     <b>/@WebSocketGroupApplicationProgramInterface?join=<u>{id}</u></b>
 </p>
 
-<pre highlight="javascript">function joinGroup(groupId){
-    return new Promise(function(resolve,reject){
-        //connect to the api and provide your group id
-        const group = new WebSocket("ws://"+location.host+"/@WebSocketGroupApplicationProgramInterface?join="+groupId);
-
-        //check when connection is enstablished
-        group.addEventListener("open",e=>{
-            //callback on success and return group
-            (resolve)(group);
-            console.log("Connection enstablished");
-        });
-
-        //handle errors
-        group.addEventListener("error",e=>{
-            //callback on error and return group
-            (reject)(group);
-            console.log("Connection closed");
-        });
-    });
-}</pre>
+<pre highlight="javascript" src="articles/storage/files/joinGroup.js"></pre>
 
 <p>
     Let's write a simple example, a web chat application with different groups.<br>
     Users can create their own public group to chat with others, and they are free to switch between groups.
 </p>
-
-<pre highlight="html" src="articles/storage/groups.html"></pre>
+<pre highlight="html" src="articles/storage/files/groups.html"></pre>

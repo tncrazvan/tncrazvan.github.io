@@ -34,13 +34,7 @@
 <p>
     It's time to write down your server details inside <b>http.json</b>.
 </p>
-<pre highlight="javascript">{
-    "port":80,
-    "webRoot": "www/", //your website directory (relative to this json file)
-    "charset": "UTF-8",
-    "timeout": 5000,
-    "bindAddress": "::" // :: means the server will bind on all available addresses
-}</pre>
+<pre highlight="json" src="articles/storage/files/http0.json"></pre>
 
 <p>
     Most of the file contains generic information, I'm going to asume that you are familiar with Socket technology
@@ -49,8 +43,8 @@
 
 <h2>Web Controllers</h2>
 <p>
-    Controllers, as in 
-    <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">Model-View-Controller (MVC)</a>, 
+    Controllers, as in
+    <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">Model-View-Controller (MVC)</a>,
     are the main request managers for you web application.<br>
     We haven't wrote any code yet, however, there are a few controllers set by default, such as <b>ControllerNotFound</b>, which triggers when
     a given resource is not found on the server.
@@ -63,7 +57,7 @@
 
 <p>
     In this case, we are not importing the java archive in a customized project, we are instead
-    directly using it as a standalone project, so we don't need to define any package for http and web socket controllers, 
+    directly using it as a standalone project, so we don't need to define any package for http and web socket controllers,
     instead the default packages will be used.
 </p>
 
@@ -75,7 +69,7 @@
     This file will be your application entry point, so throw your html template inside it.
 </p>
 
-<pre highlight="html" src="articles/storage/index.html"></pre>
+<pre highlight="html" src="articles/storage/files/index.html"></pre>
 
 <h2>Start the web server</h2>
 
@@ -90,7 +84,7 @@
     You should get an output similar to this
 </p>
 
-<pre style="font-family: monospace;white-space: pre;max-width: 100%;" highlight="html" src="articles/storage/output.elk"></pre>
+<pre style="font-family: monospace;white-space: pre;max-width: 100%;" highlight="html" src="articles/storage/files/output.elk"></pre>
 <br />
 <br />
 <style>
@@ -104,7 +98,7 @@
             grid-template-columns: 1fr 15fr 1fr;
         }
     }
-    
+
 </style>
 <div id="next-doc">
     <div></div>
@@ -113,7 +107,7 @@
 </div>
 <br />
 <br />
-<br /> 
+<br />
 <script>
     (()=>{
         setOnRelease(window["websocket-groups"],async e=>{
