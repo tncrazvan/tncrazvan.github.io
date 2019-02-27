@@ -13,18 +13,18 @@
             padding: 1em;
             cursor: pointer;
             border-bottom: 1px solid transparent;
-    
+
             transition: background 200ms, transform 200ms;
             -webkit-transition: background 200ms, transform 200ms;
             -moz-transition: background 200ms, transform 200ms;
             -ms-transition: background 200ms, transform 200ms;
             -o-transition: background 200ms, transform 200ms;
         }
-    
+
         .menu-item:first-child{
             margin: 0;
         }
-    
+
         .menu-item *{
             font-size: 1em;
         }
@@ -47,7 +47,7 @@
     </style>
     <br /><br />
     <div>
-        
+
     </div>
     <div id="download" class="menu-item">
         <span class="fa fa-box"></span>
@@ -57,14 +57,14 @@
         <span class="fa fa-box-open"></span>
         View source code
     </div>
-    
+
     <script>
         if(hasTouch()){
             swipe.setLeftMenu(menu,30,Percent(100));
         }else{
             swipe.setLeftMenu(menu,30,"22em");
         }
-        
+
         menu.toggle=(speed=30)=>{
             return toggleLeftMenu(menu,speed);
         };
@@ -77,15 +77,15 @@
         menu.show=(speed=30)=>{
             return showLeftMenu(menu,speed);
         };
-        
+
         swipe.onLeftMenuMove=x=>{
             let max = -menu.offsetWidth;
             x += -max;
-    
+
             window["top-menu"].style.left=Pixel(x);
             window["bottom"].style.left=Pixel(x);
             //window["main"].style.left=Pixel(x);
-    
+
             x = (x/-max).truncate(2);
             if(x === 0){
                 window["shadow"].style.display = "none";
@@ -94,14 +94,14 @@
             }
             window["shadow"].style.opacity = x;
         };
-    
+
         setOnRelease(window["download"],e=>{
             const a = create("a");
             a.setAttribute("target","_blank");
-            a.setAttribute("href","https://github.com/tncrazvan/ElkServer/releases");
+            a.setAttribute("href","https://github.com/tncrazvan/ElkServer/tree/1.0.0");
             a.click();
         });
-    
+
         setOnRelease(window["view-source-code"],e=>{
             const a = create("a");
             a.setAttribute("target","_blank");
