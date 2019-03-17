@@ -1,21 +1,22 @@
 
+<style>
+    #shadow{
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        background: rgba(50,50,50,0.3);
+        opacity: 0;
+        display: none;
+    }
+</style>
 <div id="shadow" export="root">
-    <style>
-        #shadow{
-            position: fixed;
-            left: 0;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 2;
-            background: rgba(50,50,50,0.3);
-            opacity: 0;
-            display: none;
-        }
-    </style>
-    <script>
-        setOnPress(shadow,e=>{
-            menu.hide();
-        });
-    </script>
+    
 </div>
+<script>
+    setOnPress(shadow,e=>{
+        menu.hide();
+    });
+</script>

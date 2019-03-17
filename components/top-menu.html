@@ -1,73 +1,72 @@
+<style>
+    #top-menu{
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        right: 0;
+        
+        background: #17141f;
+        color: #d1d0d2;
+
+        box-shadow: 0 0.3em 1em rgba(50,50,50,0.1);
+    }
+    #toggle-menu{
+        padding: 1em;
+        border: 0;
+        display: inline-block;
+        color: #d1d0d2;
+        cursor: pointer;
+
+        transition: background 200ms;
+        -webkit-transition: background 200ms;
+        -moz-transition: background 200ms;
+        -ms-transition: background 200ms;
+        -o-transition: background 200ms;
+    }
+    #toggle-menu:active{
+        background: #2e283e;
+    }
+    #toggle-menu > h3{
+        display: inline-block;
+    }
+    #toggle-menu *{
+        font-size: 1em;
+    }
+
+    #bars-icon{
+        transition: transform 200ms;
+        -webkit-transition: transform 200ms;
+        -moz-transition: transform 200ms;
+        -ms-transition: transform 200ms;
+        -o-transition: transform 200ms;
+    }
+    #menu-title{
+        color: #d1d0d2;
+    }
+</style>
 
 <div id="top-menu" export="root">
-    <style>
-        #top-menu{
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            right: 0;
-            
-            background: #17141f;
-            color: #d1d0d2;
-    
-            box-shadow: 0 0.3em 1em rgba(50,50,50,0.1);
-        }
-        #toggle-menu{
-            padding: 1em;
-            border: 0;
-            display: inline-block;
-            color: #d1d0d2;
-            cursor: pointer;
-    
-            transition: background 200ms;
-            -webkit-transition: background 200ms;
-            -moz-transition: background 200ms;
-            -ms-transition: background 200ms;
-            -o-transition: background 200ms;
-        }
-        #toggle-menu:active{
-            background: #2e283e;
-        }
-        #toggle-menu > h3{
-            display: inline-block;
-        }
-        #toggle-menu *{
-            font-size: 1em;
-        }
-    
-        #bars-icon{
-            transition: transform 200ms;
-            -webkit-transition: transform 200ms;
-            -moz-transition: transform 200ms;
-            -ms-transition: transform 200ms;
-            -o-transition: transform 200ms;
-        }
-        #menu-title{
-            color: #d1d0d2;
-        }
-    
-    </style>
     <div id="toggle-menu">
         <span id="bars-icon" class="fa fa-bars"></span>
         <h3 id="menu-title">Menu</h3>
     </div>
-    <script>
-            setOnRelease(window["toggle-menu"],e=>{
-                e.preventDefault();
-                menu.toggle();
-                window["bars-icon"].style.transform = "rotate(0deg)";
-            });
-            setOnPress(window["toggle-menu"],e=>{
-                e.preventDefault();
-                window["bars-icon"].style.transform = "rotate(360deg)";
-            });
-            /*window["top-menu"].addEventListener("mouseover",e=>{
-                window["bars-icon"].style.transform = "rotate(180deg)";
-            },false);*/
-            /*window["top-menu"].addEventListener("mouseout",e=>{
-                window["bars-icon"].style.transform = "rotate(0deg)";
-            },false);*/
-        </script>
-        
 </div>
+
+<script>
+    setOnRelease(window["toggle-menu"],e=>{
+        e.preventDefault();
+        menu.toggle();
+        window["bars-icon"].style.transform = "rotate(0deg)";
+    });
+    setOnPress(window["toggle-menu"],e=>{
+        e.preventDefault();
+        window["bars-icon"].style.transform = "rotate(360deg)";
+    });
+    /*window["top-menu"].addEventListener("mouseover",e=>{
+        window["bars-icon"].style.transform = "rotate(180deg)";
+    },false);*/
+    /*window["top-menu"].addEventListener("mouseout",e=>{
+        window["bars-icon"].style.transform = "rotate(0deg)";
+    },false);*/
+</script>

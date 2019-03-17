@@ -88,8 +88,9 @@ let webroot = new Includer({
     "components":"."
 });
 
-async function setContent(target,uri){
+async function setContent(target,uri,pushState=null){
     return new Promise(async resolve=>{
+        if(pushState !== null) history.pushState(null, uri, pushState);
         target.className = "animated-pop hide-pop";
         let contents = (await new GetHttpPromise(uri)).response;
         let canShow = false;
@@ -108,8 +109,8 @@ async function setContent(target,uri){
     
 }
 
-function setView(uri){
-    return setContent(main,"views/"+uri+".html");
+async function setView(uri,pushState=null){
+    await setContent(main,"views/"+uri+".html",pushState);
 }
 
 function Spinner(){
