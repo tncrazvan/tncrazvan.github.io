@@ -10,5 +10,9 @@
     {
         "title":"<span class='fa fa-podcast'></span>Websocket Groups",
         "uri":"articles/storage/websocket-groups.html"
+    },
+    {
+        "title":"<span class='fa fa-server'></span>Custom Server",
+        "uri":"articles/storage/custom-server.html"
     }
 ]
