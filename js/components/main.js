@@ -1,5 +1,5 @@
 (async ()=>{
-    const index = JSON.parse((await new GetHttpPromise("articles/index.json")).response);
+    const index = await (await fetch("articles/index.json")).json();
     foreach(index,(article,i)=>{
         const item = create("div.menu-item",article.title);
         menu.appendChild(item);

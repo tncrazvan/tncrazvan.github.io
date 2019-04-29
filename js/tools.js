@@ -92,7 +92,7 @@ async function setContent(target,uri,pushState=null){
     return new Promise(async resolve=>{
         if(pushState !== null) history.pushState(null, uri, pushState);
         target.className = "animated-pop hide-pop";
-        let contents = (await new GetHttpPromise(uri)).response;
+        let contents = await (await fetch(uri)).text();
         let canShow = false;
         setTimeout(()=>{
             canShow = true;
