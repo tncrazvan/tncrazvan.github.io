@@ -25,8 +25,8 @@
             if(!item.hasAttribute("highlighted") && item.hasAttribute("highlight")){
                 let data;
                 if(item.hasAttribute("src")){
-                    let request = await new GetHttpPromise(item.getAttribute("src"));
-                    data = request.response;
+                    let request = await fetch(item.getAttribute("src"));
+                    data = await request.text();
                     
                 }else{
                     data = item.innerText;
