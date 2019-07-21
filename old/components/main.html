@@ -1,0 +1,36 @@
+<style>
+    #main{
+        position: fixed;
+        z-index: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        overflow-y: auto;
+        
+        background: #ffffff;
+    }
+    
+</style>
+
+<div id="main-wrapper" export="root">
+    
+    <div id="main">
+        <div id="content" class="home-page">
+            <div id="articles">
+        
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<script>
+    (async ()=>{
+        window.onhashchange = async function() {
+            await redirect(); 
+        }
+        main.style.paddingTop = Pixel(window["top-menu"].offsetTop+window["top-menu"].offsetHeight);
+        await use.js("components/main");
+    })();
+</script>

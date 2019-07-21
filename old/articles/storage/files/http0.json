@@ -1,0 +1,7 @@
+{
+    "port":80,
+    "webRoot": "www/", //your website directory (relative to this json file)
+    "charset": "UTF-8",
+    "timeout": 5000,
+    "bindAddress": "::" // :: means the server will bind on all available addresses
+}

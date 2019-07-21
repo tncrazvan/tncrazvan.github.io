@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.fa{
+    margin-right: 0.5em;
+}
+
+.btn{
+    cursor: pointer;
+}
+
+.btn{
+    position: relative;
+    margin-left: 3em;
+    margin-right: 3em;
+    padding: 1em;
+    cursor: pointer;
+
+    transition: background 200ms, transform 200ms;
+    -webkit-transition: background 200ms, transform 200ms;
+    -moz-transition: background 200ms, transform 200ms;
+    -ms-transition: background 200ms, transform 200ms;
+    -o-transition: background 200ms, transform 200ms;
+}
+
+.btn *,.btn{
+    font-size: 1em;
+    font-weight: bolder;
+}
+
+.btn:active{
+    transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+    -o-transform: scale(0.95);
+    -moz-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+}
+
+#main{
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.hljs{
+    max-width: 55%;
+}

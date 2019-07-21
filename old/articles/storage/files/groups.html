@@ -1,0 +1,66 @@
+<select id="list">
+    <!-- populate this with javascript -->
+</select>
+<button id="join">Join Group</button><br />
+<input id="groupName" type="text" placeholder="Group name">
+<button id="create">Create Group</button>
+<div id="messages" style="border: 1px solid #333333;padding: 1em"></div>
+<input id="message" type="text" placeholder="Type your message here">
+<button id="submit">Submit</button>
+<script>
+  (async ()=>{
+
+      /*I will use this to store the pointer of the
+       current group in which the client is messaging*/
+      let group = null;
+
+      /*grabbing all ui elements
+      for later use*/
+      const join = document.getElementById("join");
+      const create = document.getElementById("create");
+      const list = document.getElementById("list");
+      const message = document.getElementById("message");
+      const messages = document.getElementById("messages");
+      const submit = document.getElementById("submit");
+
+      let groups = await getAllGroups();
+
+      list.innerHTML = "";
+
+      /*iterate through all groups' metadata and
+      add the group to the ui list*/
+      groups.map(g=>{
+          let item = document.createElement("option");
+          item.value = g.id;
+          item.text = g.name;
+          list.appendChild(item);
+      });
+
+      join.addEventListener("click",async e=>{
+          group = await joinGroup(list.value);
+
+          group.addEventListener("message",e=>{
+              messages.innerHTML += "<hr />"+e.data;
+          });
+
+          group.addEventListener("close",e=>{
+              console.log("Connection closed");
+          });
+      });
+      
+      create.addEventListener("click",async e=>{
+          const id = await createGroup(groupName.value);
+          let item = document.createElement("option");
+          item.value = id;
+          item.text = groupName.value;
+          groupName.value = "";
+          list.appendChild(item);
+      });
+
+      submit.addEventListener("click",e=>{
+          group.send(message.value);
+          messages.innerHTML += "<hr />"+message.value;
+          message.value = "";
+      });
+  })();
+</script>
