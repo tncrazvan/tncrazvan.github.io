@@ -26,7 +26,7 @@ Components.FixedModal=function(){
 
     this.data={
         header: "Add to apps",
-        message: "Would you want to add this service to your app list?"
+        message: "Would you like to add this service to your app list?"
     };
 
     cancel.addEventListener("click",e=>{
