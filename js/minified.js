@@ -63,7 +63,7 @@ const isElement=function(obj) {
         (typeof obj.ownerDocument ==="object");
     }
 };
-const create=async function(tag,content,options,allowVariables,extra={},async=false){
+const create=function(tag,content,options,allowVariables,extra={},async=false){
     tag = tag.split(".");
     let element;
     for(let i = 0; i < tag.length; i++){
@@ -13603,6 +13603,72 @@ Components.Container=function(){
         display: "block"
     });
 };
+Components.FixedModal=function(){
+    this.innerHTML = "";
+    this.css({
+        background: "#2e2a38"
+    });
+    let $this = this;
+    this.classList.add("modal");
+    this.classList.add("bottom-sheet");
+    let header = create("h4",$this.getAttribute("header"));
+    let message = create("p",$this.getAttribute("message"));
+    let content = create(".modal-content",[header,message]);
+
+    let cancel = create("Button","Cancel").css({
+        color: "#f1f1f1"
+    });
+    let confirm = create("Button","Confirm").css({
+        color: "#f1f1f1"
+    });
+
+    let footer = create(".modal-footer",[cancel,confirm]).css({
+        background: Rgb(146, 42, 26)
+    });
+
+    this.appendChild(content);
+    this.appendChild(footer);
+
+    this.data={
+        header: "Add to apps",
+        message: "Would you want to add this service to your app list?"
+    };
+
+    cancel.addEventListener("click",e=>{
+       this.close();
+    });
+
+    confirm.addEventListener("click",e=>{
+        install.prompt();
+        install
+            .userChoice
+            .then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('User accepted the A2HS prompt');
+                } else {
+                    console.log('User dismissed the A2HS prompt');
+                }
+                deferredPrompt = null;
+            });
+        this.close();
+    });
+
+    let instance = M.Modal.init(this);
+
+    this.open=function(){
+        //localStorage["promped"] = true;
+        instance.open();
+    };
+
+    this.close=function(){
+        instance.close();
+    };
+
+    this.destroy=function(){
+        instance.destroy();
+    };
+
+};
 Components.SectionTitle=function(){
     this.css({
         display: "block",
@@ -13653,6 +13719,8 @@ Components.Button=function(){
     this.classList.add("btn-flat");
 };
 Components.NavButton=function(){
+    const ACTION_DEFAULT = 0;
+    const ACTION_INSTALL = 1;
     let colors={
         background: {
             normal: "transparent",
@@ -13712,13 +13780,21 @@ Components.NavButton=function(){
 
     this.addEventListener("click",async e=>{
         //state(this.dataset.state);
-        await content.change(this.dataset.view);
+        console.log(this.dataset);
+        switch(parseInt(this.dataset.action)){
+            case ACTION_DEFAULT:
+                await content.change(this.dataset.view);
+            break;
+            case ACTION_INSTALL:
+                modalBottom.open();
+            break;
+        }
     });
 
     this.data={
         list: [
-            {text:"Quick Start",view:"Views/Home",state:"/home"}/*,
-            {text:"Documentation",view:"Views/Documentation",state:"/documentation"}*/
+            {text:"Quick Start",view:"Views/Home",state:"/home",action:ACTION_DEFAULT},
+            {text:"Install",view:"Views/Home",state:"/home",action:ACTION_INSTALL}
         ]
     };
 };
@@ -13747,6 +13823,29 @@ Components.DeleteArticle=function(){
     });
 };
 document.addEventListener("DOMContentLoaded", async function(event) { 
+    // Check that service workers are supported
+    window.install = null;
+    if ('serviceWorker' in navigator) {
+        // Use the window load event to keep the page load performant
+        navigator.serviceWorker.register('/worker.js');
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent Chrome 67 and earlier from automatically showing the prompt
+            e.preventDefault();
+            // Stash the event so it can be triggered later.
+            install = e;
+
+            (function poll(){
+                if(modalBottom){
+                    if(!localStorage["autoprompted"])
+                        modalBottom.open();
+                    localStorage.setItem("autoprompted",true);
+                    return;
+                }
+                setTimeout(poll,500);
+            })();
+        });
+    }
+    
     //loading content area
     await main.template("Wrappers/Nav");
     await main.template("Wrappers/Content");
