@@ -10,7 +10,7 @@ use com\github\tncrazvan\CatPaw\Http\HttpController;
 class Hello extends HttpController{
     public function &main(HttpEvent &$e, array &$path, string &$content){
         return new HttpResponse([
-            Status::SUCCESS
+            "Status" => Status::SUCCESS
         ],"hello");
     }
     public function onClose():void{}
