@@ -2,10 +2,10 @@
 
 namespace App\Http;
 
-use com\github\tncrazvan\CatPaw\Tools\Status;
-use com\github\tncrazvan\CatPaw\Http\HttpEvent;
-use com\github\tncrazvan\CatPaw\Http\HttpResponse;
-use com\github\tncrazvan\CatPaw\Http\HttpController;
+use com\github\tncrazvan\catpaw\tools\Status;
+use com\github\tncrazvan\catpaw\http\HttpEvent;
+use com\github\tncrazvan\catpaw\http\HttpResponse;
+use com\github\tncrazvan\catpaw\http\HttpController;
 
 class Hello extends HttpController{
     public function &main(HttpEvent &$e, array &$path, string &$content){
