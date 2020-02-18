@@ -2,12 +2,12 @@
 
 namespace App\Http;
 
-use com\github\tncrazvan\catpaw\http\HttpEvent;
+use com\github\tncrazvan\catpaw\http\HttpResponse;
 use com\github\tncrazvan\catpaw\http\HttpController;
 
 class Hello extends HttpController{
-    public function &main(HttpEvent &$e, array &$path, string &$content){
-        $e->send("hello");
+    public function main():void{
+        $this->send("hello");
     }
     public function onClose():void{}
 }
