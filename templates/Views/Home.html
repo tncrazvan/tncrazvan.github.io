@@ -55,16 +55,6 @@
         </li>
     </ul>
 
-    <!--##################### MINIFY #####################-->
-    <SectionTitle id="minify">Minify</SectionTitle>
-    <p>
-        The project comes with a few handy scripts, one of the scripts is <b>minify</b>.<br /><br />
-        <b>Minify</b> will minify your CSS and JS files as long as you specify them in the <b>/config/assets.php</b> file.<br />
-        
-        You can <b>watch</b> the script every 0.1 second by running 
-        <Coding language="bash">watch -n0.1 ./minify</Coding>
-    </p>
-
 
     <!--##################### CONTROLLERS #####################-->
     <SectionTitle id="controllers">Controllers</SectionTitle>
@@ -73,21 +63,27 @@
         A controller has the role of serving or fetching data from client http or websocket requests.
     </p>
     <p>
-        All your controllers are located under <b>/controllers/</b> by default, 
-        their location in the file system doesn't really matter as long as they are loaded correctly to your application.<br />
+        Controller don't have a specific file system location, infact, any class that extends the abstract class 
+        <coding language="php">\com\github\tncrazvan\catpaw\http\HttpController</coding> is an http controller.
+        On the other hand, any class extendgin <coding language="php">\com\github\tncrazvan\catpaw\websocket\WebSocketController</coding>
+        is a websocket controller.<br />
     </p>
     <p>
-        In order to define your controllers, your application must first know where to find them exactly, 
-        and since the file system is not a reliable way to locate them under a project, we're using namespaces.<br />
+        These controllers however are not exposed to the web, which means they are not attatched to any specific route yet.<br />
+        In order to expose a controller you must define it's classname in <b>config/config.php</b> in the <coding language="js">controllers.http</codig> field.
     </p>
     <p>
-        Open <b>/config/http.json</b> in a text editor. You should see something like this:<br /><br />
+        Open <b>/config/config.php</b> in a text editor. You should see something like this:<br /><br />
         <Coding language="json">@this.project.http</Coding><br /><br />
-        All you need to do in order to define a namespace for your controller is to change 
-        <Coding language="json">controllers.http: "..."</Coding> to whatever you want your namespace to be.<br />
-        As you can see <b>App\Http</b> is the default namespace for http controllers.<br />
+        All you need to do in order to define a namespace for your controller is to add your class to the  
+        <Coding language="json">controllers.http</Coding> field.<br />
+        You must do the same for websocket controllers, except you must act on the <Coding language="json">controllers.websocket</Coding>
+        field.
     </p>
-
+    <p>
+        The CatPaw library defines some virtual paths for your by default, such as "@file" which ensures that the server can serve normal files and "@404" which ensures the server responds with a 404 Not Found when the requested resource cannot be found, instead of hanging the socket connection.<br />
+        A Ascii table is printed to the console when running the server, this table contains all the information your server uses, including all these virtual paths and your custom paths
+    </p>
 
     <!--##################### CONTROLLER EXAMPLE #####################-->
     <SectionTitle id="controllers">Controller Example</SectionTitle>
@@ -103,17 +99,17 @@
         <li class="collection-item">
             <p>
                 Now we extend the HttpController in order to allow this class to act as a controller.
-                The HttpController class is an abstract class, and it contains 2 
-                abstract methods which must be defined: <b>&main</b> and <b>onClose:void</b>
             </p>
             <Coding language="php">@this.project.example.controller3</Coding>
         </li>
         <li class="collection-item">
             <p>
-                The <b>&main</b> method is called only when no method is specified in the controller request, 
-                so we can look at it as a default method.<br />
-                The <b>onClose</b> method is always called. This method is supposed to be used to undo changes, 
-                or close database connections before closing the http connection itself.
+                The <b>main</b> method is called only when no method is specified in the controller request, 
+                so we can look at it as a fallback method.<br />
+                The <b>onClose</b> method is always called if defined in your class.<br />
+                This method is supposed to be used to undo changes, 
+                or close database connections before closing the http connection itself.<br />
+                It's a cleanup method.
             </p>
             <br />
             <p>
@@ -122,7 +118,9 @@
             </p>
             <p>
                 One way to reply to the client is to simply call the method
-                <b>HttpEvent::send($data)</b> on the event <b>$e</b>, like so:
+                <b>HttpEvent::send($data)</b> on the event <b>$e</b>.<br />
+                Note that HttpController extends HttpEvent, thus your controller inherits HttpEvent::send.<br />
+                Here's an example:
             </p>
             <Coding language="php">@this.project.example.controller4</Coding>
             <p>
