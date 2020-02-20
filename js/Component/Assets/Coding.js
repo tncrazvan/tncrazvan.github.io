@@ -1,7 +1,7 @@
 Components.Coding=function(){
     this.onload=async function(){
         let html = this.innerHTML;
-        console.log(html,this.innerHTML);
+        console.log(this.innerHTML);
         let language = this.hasAttribute("language")?this.getAttribute("language"):"plaintext";
         this.innerHTML = "";
         let code = await create("code."+language,html);
