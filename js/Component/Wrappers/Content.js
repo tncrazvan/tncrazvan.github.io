@@ -29,7 +29,7 @@ Components.Content=function(){
         return new Promise(resolve=>{
             this.css({
                 opacity: 0,
-                top: Pixel(-10)
+                top: pixel(-10)
             });
             setTimeout(async ()=>{
                 await this.template(templateName);

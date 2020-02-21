@@ -5,7 +5,7 @@ Components.NavButton=function(){
         background: {
             normal: "transparent",
             hover: "#922a1a",
-            pressed: Rgba(255,255,255,0.2)
+            pressed: rgba(255,255,255,0.2)
         },
         text: {
             normal: "#ffffff",

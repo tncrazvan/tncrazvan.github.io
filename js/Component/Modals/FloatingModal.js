@@ -24,11 +24,6 @@ Components.FloatingModal=function(){
     this.appendChild(content);
     this.appendChild(footer);
 
-    this.data={
-        header: "Add to apps",
-        message: "Would you like to add this service to your app list?"
-    };
-
     cancel.addEventListener("click",e=>{
        this.close();
     });

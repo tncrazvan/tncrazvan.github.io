@@ -13,7 +13,33 @@
     }
 </style>
 
-<Container extends="Home" style="padding-left: 1em;padding-right: 1em" export replace>
+
+<script>
+    Components.Home = async function(){
+        const REGEX = /^\<\?php\r?\n?/g;
+        this.$onMount=()=>{
+            let parent = this.getParentComponent();
+            parent.css({
+                opacity: 1,
+                top: pixel(0)
+            });
+        };
+        this.data={
+            project:{
+                location: "tncrazvan/catpawskeleton",
+                http: await (await fetch("/Template/docs/examples/config.txt")).text(),
+                example: {
+                    controller1: (await (await fetch("/Template/docs/examples/Hello/1.php")).text()).replace(REGEX,""),
+                    controller3: (await (await fetch("/Template/docs/examples/Hello/3.php")).text()).replace(REGEX,""),
+                    controller4: (await (await fetch("/Template/docs/examples/Hello/4.php")).text()).replace(REGEX,""),
+                    controller5: (await (await fetch("/Template/docs/examples/Hello/5.php")).text()).replace(REGEX,""),
+                }
+            }
+        };
+    }
+</script>
+
+<Home :extends="/Container" qwerty style="padding-left: 1em;padding-right: 1em" export replace>
     <!--##################### WHAT IS CATPAW #####################-->
     <img class="top-logo" src="/images/logo.png">
     <h4 class="top-title">What is CatPaw?</h4>
@@ -39,7 +65,7 @@
         <li class="collection-item">
             <b>Make a project</b><br />
             Run 
-            <Coding language="bash">composer create-project <b>@this.project.location</b> ProjectName -sdev</Coding>
+            <Coding language="bash">composer create-project <b asd :html="this.$parent.$parent.project.location"></b> ProjectName -sdev</Coding>
             to make a new CatPaw project from the public skeleton template
         </li>
         <li class="collection-item">
@@ -74,7 +100,7 @@
     </p>
     <p>
         Open <b>/config/config.php</b> in a text editor. You should see something like this:<br /><br />
-        <Coding language="json">@this.project.http</Coding><br /><br />
+        <Coding language="json" :html="this.$parent.project.http"></Coding><br /><br />
         All you need to do in order to define a namespace for your controller is to add your class to the  
         <Coding language="json">controllers.http</Coding> field.<br />
         You must do the same for websocket controllers, except you must act on the <Coding language="json">controllers.websocket</Coding>
@@ -129,28 +155,5 @@
             <Coding language="php">@this.project.example.controller5</Coding>
         </li>
     </ul>
-</Container>
+</Home>
 
-<script>
-    Components.Home = async function(){
-        const REGEX = /^\<\?php\r?\n?/g;
-        this.data={
-            project:{
-                location: "tncrazvan/catpawskeleton",
-                http: await (await fetch("/templates/docs/examples/config.txt")).text(),
-                example: {
-                    controller1: (await (await fetch("/templates/docs/examples/Hello/1.php")).text()).replace(REGEX,""),
-                    controller3: (await (await fetch("/templates/docs/examples/Hello/3.php")).text()).replace(REGEX,""),
-                    controller4: (await (await fetch("/templates/docs/examples/Hello/4.php")).text()).replace(REGEX,""),
-                    controller5: (await (await fetch("/templates/docs/examples/Hello/5.php")).text()).replace(REGEX,""),
-                }
-            }
-        };
-        await this.refresh();
-        let parent = this.getParentComponent();
-        parent.css({
-            opacity: 1,
-            top: Pixel(0)
-        });
-    }
-</script>
