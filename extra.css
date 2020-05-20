@@ -9070,14 +9070,7 @@ hr {
   height: 1px;
   background: #212121;
 }
-/*# sourceMappingURL=extra.css.map */.waves-effect.waves-cat .waves-ripple {
-	/* The alpha value allows the text and background color
-	of the button to still show through. */
-	background-color: rgba(255, 85, 72, 0.1);
-}
-.waves-effect.waves-crimson .waves-ripple {
-	background-color: rgb(146, 42, 26);
-}
+/*# sourceMappingURL=extra.css.map */
 ::-webkit-scrollbar {
 	width: 10px;
 }
@@ -9099,6 +9092,13 @@ hr {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
 	background: var(--color-scrollbar-thumb);
+}.waves-effect.waves-cat .waves-ripple {
+	/* The alpha value allows the text and background color
+	of the button to still show through. */
+	background-color: rgba(255, 85, 72, 0.1);
+}
+.waves-effect.waves-crimson .waves-ripple {
+	background-color: rgb(146, 42, 26);
 }.btn{
 	transition: background-color 200ms;
 	font-weight: "bold";
