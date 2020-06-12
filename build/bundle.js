@@ -4461,7 +4461,7 @@ var app = (function () {
     function create_then_block(ctx) {
     	let each_1_anchor;
     	let current;
-    	let each_value = /*posts*/ ctx[9].sort(sortBy("lastChange"));
+    	let each_value = /*posts*/ ctx[9].sort(sortBy("lastChange", true));
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -4491,7 +4491,7 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			if (dirty & /*window, promise, sortBy, Date*/ 32) {
-    				each_value = /*posts*/ ctx[9].sort(sortBy("lastChange"));
+    				each_value = /*posts*/ ctx[9].sort(sortBy("lastChange", true));
     				validate_each_argument(each_value);
     				let i;
 
@@ -4553,7 +4553,7 @@ var app = (function () {
     	return block;
     }
 
-    // (117:4) {#each posts.sort(sortBy("lastChange")) as post}
+    // (117:4) {#each posts.sort(sortBy("lastChange",true)) as post}
     function create_each_block(ctx) {
     	let div;
     	let h3;
@@ -4582,12 +4582,12 @@ var app = (function () {
     			br = element("br");
     			t3 = space();
     			t4 = space();
-    			add_location(h3, file$d, 118, 6, 3486);
-    			add_location(small, file$d, 119, 6, 3515);
-    			add_location(br, file$d, 119, 68, 3577);
+    			add_location(h3, file$d, 118, 6, 3491);
+    			add_location(small, file$d, 119, 6, 3520);
+    			add_location(br, file$d, 119, 68, 3582);
     			html_tag = new HtmlTag(raw_value, t4);
     			attr_dev(div, "class", "post svelte-13mggtb");
-    			add_location(div, file$d, 117, 5, 3419);
+    			add_location(div, file$d, 117, 5, 3424);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -4628,7 +4628,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(117:4) {#each posts.sort(sortBy(\\\"lastChange\\\")) as post}",
+    		source: "(117:4) {#each posts.sort(sortBy(\\\"lastChange\\\",true)) as post}",
     		ctx
     	});
 
