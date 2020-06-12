@@ -3717,7 +3717,7 @@ var app = (function () {
     	return block;
     }
 
-    // (81:3) {:then key}
+    // (80:3) {:then key}
     function create_then_block_1(ctx) {
     	let if_block_anchor;
     	let current;
@@ -3755,14 +3755,14 @@ var app = (function () {
     		block,
     		id: create_then_block_1.name,
     		type: "then",
-    		source: "(81:3) {:then key}",
+    		source: "(80:3) {:then key}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (82:4) {#if key}
+    // (81:4) {#if key}
     function create_if_block$3(ctx) {
     	let await_block_anchor;
     	let promise_1;
@@ -3827,7 +3827,7 @@ var app = (function () {
     		block,
     		id: create_if_block$3.name,
     		type: "if",
-    		source: "(82:4) {#if key}",
+    		source: "(81:4) {#if key}",
     		ctx
     	});
 
@@ -3856,7 +3856,7 @@ var app = (function () {
     	return block;
     }
 
-    // (85:5) {:then hashedKey}
+    // (84:5) {:then hashedKey}
     function create_then_block_2(ctx) {
     	let if_block_anchor;
     	let current;
@@ -3894,14 +3894,14 @@ var app = (function () {
     		block,
     		id: create_then_block_2.name,
     		type: "then",
-    		source: "(85:5) {:then hashedKey}",
+    		source: "(84:5) {:then hashedKey}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (86:6) {#if hashedKey === publicKey}
+    // (85:6) {#if hashedKey === publicKey}
     function create_if_block_1$3(ctx) {
     	let div1;
     	let small;
@@ -3963,12 +3963,12 @@ var app = (function () {
     			t4 = space();
     			create_component(rightcenteredgrid.$$.fragment);
     			attr_dev(small, "class", "status-online svelte-13mggtb");
-    			add_location(small, file$d, 87, 8, 2539);
+    			add_location(small, file$d, 86, 8, 2526);
     			attr_dev(div0, "class", "editor-content svelte-13mggtb");
-    			add_location(div0, file$d, 89, 8, 2668);
-    			add_location(br, file$d, 94, 8, 2827);
+    			add_location(div0, file$d, 88, 8, 2655);
+    			add_location(br, file$d, 93, 8, 2814);
     			attr_dev(div1, "class", "editor svelte-13mggtb");
-    			add_location(div1, file$d, 86, 7, 2468);
+    			add_location(div1, file$d, 85, 7, 2455);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
@@ -4044,14 +4044,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$3.name,
     		type: "if",
-    		source: "(86:6) {#if hashedKey === publicKey}",
+    		source: "(85:6) {#if hashedKey === publicKey}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (91:9) <InlineCKEditor bind:this={ckeditor}>
+    // (90:9) <InlineCKEditor bind:this={ckeditor}>
     function create_default_slot_4(ctx) {
     	let t;
 
@@ -4071,14 +4071,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_4.name,
     		type: "slot",
-    		source: "(91:9) <InlineCKEditor bind:this={ckeditor}>",
+    		source: "(90:9) <InlineCKEditor bind:this={ckeditor}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (99:9) {:else}
+    // (98:9) {:else}
     function create_else_block(ctx) {
     	let t;
     	let current;
@@ -4157,14 +4157,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(99:9) {:else}",
+    		source: "(98:9) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (97:9) {#if sending}
+    // (96:9) {#if sending}
     function create_if_block_2(ctx) {
     	let current;
     	const spinnerelipsis = new SpinnerElipsis({ $$inline: true });
@@ -4196,14 +4196,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(97:9) {#if sending}",
+    		source: "(96:9) {#if sending}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (100:10) {#if error !== ""}
+    // (99:10) {#if error !== ""}
     function create_if_block_3(ctx) {
     	let small;
     	let t0;
@@ -4219,8 +4219,8 @@ var app = (function () {
     			t1 = space();
     			br = element("br");
     			attr_dev(small, "class", "error svelte-13mggtb");
-    			add_location(small, file$d, 100, 11, 2977);
-    			add_location(br, file$d, 101, 11, 3065);
+    			add_location(small, file$d, 99, 11, 2964);
+    			add_location(br, file$d, 100, 11, 3052);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, small, anchor);
@@ -4259,14 +4259,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(100:10) {#if error !== \\\"\\\"}",
+    		source: "(99:10) {#if error !== \\\"\\\"}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (104:10) <IconButton onClick={publish} icon="send">
+    // (103:10) <IconButton onClick={publish} icon="send">
     function create_default_slot_3(ctx) {
     	let t;
 
@@ -4286,14 +4286,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_3.name,
     		type: "slot",
-    		source: "(104:10) <IconButton onClick={publish} icon=\\\"send\\\">",
+    		source: "(103:10) <IconButton onClick={publish} icon=\\\"send\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (96:8) <RightCenteredGrid>
+    // (95:8) <RightCenteredGrid>
     function create_default_slot_2(ctx) {
     	let current_block_type_index;
     	let if_block;
@@ -4364,14 +4364,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_2.name,
     		type: "slot",
-    		source: "(96:8) <RightCenteredGrid>",
+    		source: "(95:8) <RightCenteredGrid>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (83:25)         <div class="display-none"></div>       {:then hashedKey}
+    // (82:25)         <div class="display-none"></div>       {:then hashedKey}
     function create_pending_block_2(ctx) {
     	let div;
 
@@ -4379,7 +4379,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			attr_dev(div, "class", "display-none");
-    			add_location(div, file$d, 83, 6, 2366);
+    			add_location(div, file$d, 82, 6, 2353);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -4396,14 +4396,14 @@ var app = (function () {
     		block,
     		id: create_pending_block_2.name,
     		type: "pending",
-    		source: "(83:25)         <div class=\\\"display-none\\\"></div>       {:then hashedKey}",
+    		source: "(82:25)         <div class=\\\"display-none\\\"></div>       {:then hashedKey}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (79:30)       <div class="display-none"></div>     {:then key}
+    // (78:30)       <div class="display-none"></div>     {:then key}
     function create_pending_block_1(ctx) {
     	let div;
 
@@ -4411,7 +4411,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			attr_dev(div, "class", "display-none");
-    			add_location(div, file$d, 79, 4, 2268);
+    			add_location(div, file$d, 78, 4, 2255);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -4428,7 +4428,7 @@ var app = (function () {
     		block,
     		id: create_pending_block_1.name,
     		type: "pending",
-    		source: "(79:30)       <div class=\\\"display-none\\\"></div>     {:then key}",
+    		source: "(78:30)       <div class=\\\"display-none\\\"></div>     {:then key}",
     		ctx
     	});
 
@@ -4457,7 +4457,7 @@ var app = (function () {
     	return block;
     }
 
-    // (117:3) {:then posts}
+    // (116:3) {:then posts}
     function create_then_block(ctx) {
     	let each_1_anchor;
     	let current;
@@ -4546,14 +4546,14 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(117:3) {:then posts}",
+    		source: "(116:3) {:then posts}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (118:4) {#each posts.sort(sortBy("lastChange")) as post}
+    // (117:4) {#each posts.sort(sortBy("lastChange")) as post}
     function create_each_block(ctx) {
     	let div;
     	let h3;
@@ -4583,11 +4583,11 @@ var app = (function () {
     			t3 = space();
     			t4 = text(t4_value);
     			t5 = space();
-    			add_location(h3, file$d, 119, 6, 3499);
-    			add_location(small, file$d, 120, 6, 3528);
-    			add_location(br, file$d, 120, 68, 3590);
+    			add_location(h3, file$d, 118, 6, 3486);
+    			add_location(small, file$d, 119, 6, 3515);
+    			add_location(br, file$d, 119, 68, 3577);
     			attr_dev(div, "class", "post svelte-13mggtb");
-    			add_location(div, file$d, 118, 5, 3432);
+    			add_location(div, file$d, 117, 5, 3419);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -4628,14 +4628,14 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(118:4) {#each posts.sort(sortBy(\\\"lastChange\\\")) as post}",
+    		source: "(117:4) {#each posts.sort(sortBy(\\\"lastChange\\\")) as post}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (115:25)       <SpinnerElipsis />     {:then posts}
+    // (114:25)       <SpinnerElipsis />     {:then posts}
     function create_pending_block(ctx) {
     	let current;
     	const spinnerelipsis = new SpinnerElipsis({ $$inline: true });
@@ -4667,14 +4667,14 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(115:25)       <SpinnerElipsis />     {:then posts}",
+    		source: "(114:25)       <SpinnerElipsis />     {:then posts}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (77:1) <CenteredGrid>
+    // (76:1) <CenteredGrid>
     function create_default_slot_1(ctx) {
     	let promise_1;
     	let t;
@@ -4776,14 +4776,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1.name,
     		type: "slot",
-    		source: "(77:1) <CenteredGrid>",
+    		source: "(76:1) <CenteredGrid>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (76:0) <Page>
+    // (75:0) <Page>
     function create_default_slot(ctx) {
     	let current;
 
@@ -4830,7 +4830,7 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(76:0) <Page>",
+    		source: "(75:0) <Page>",
     		ctx
     	});
 
@@ -4894,7 +4894,6 @@ var app = (function () {
     }
 
     async function getPosts() {
-    	debugger;
     	let response = new Array();
     	let list = await fetch("/posts/list.json");
     	list = await list.json();
