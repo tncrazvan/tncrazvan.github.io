@@ -4565,9 +4565,9 @@ var app = (function () {
     	let t2;
     	let br;
     	let t3;
-    	let t4_value = window.atob(/*post*/ ctx[10].content) + "";
+    	let html_tag;
+    	let raw_value = window.atob(/*post*/ ctx[10].content) + "";
     	let t4;
-    	let t5;
     	let div_transition;
     	let current;
 
@@ -4581,11 +4581,11 @@ var app = (function () {
     			t2 = text(t2_value);
     			br = element("br");
     			t3 = space();
-    			t4 = text(t4_value);
-    			t5 = space();
+    			t4 = space();
     			add_location(h3, file$d, 118, 6, 3486);
     			add_location(small, file$d, 119, 6, 3515);
     			add_location(br, file$d, 119, 68, 3577);
+    			html_tag = new HtmlTag(raw_value, t4);
     			attr_dev(div, "class", "post svelte-13mggtb");
     			add_location(div, file$d, 117, 5, 3419);
     		},
@@ -4598,8 +4598,8 @@ var app = (function () {
     			append_dev(small, t2);
     			append_dev(div, br);
     			append_dev(div, t3);
+    			html_tag.m(div);
     			append_dev(div, t4);
-    			append_dev(div, t5);
     			current = true;
     		},
     		p: noop,
