@@ -15,10 +15,25 @@ class HelloPage implements HttpEventInterface{
         if($onClose !== null)
             $onClose = new Close();
     }
-    public function run(){
+    public function get(){
         echo "Received test param:$this->test\n";
         return ServerFile::response($this->e,$this->e->listener->so->webRoot,"index.html");
     }
+
+    /*
+    public function post(){
+        ...Todo for POST method
+    }
+    public function put(){
+        ...Todo for PUT method
+    }
+    public function update(){
+        ...Todo for UPDATE method
+    }
+    public function delete(){
+        ...Todo for DELETE method
+    }
+    */
 }
 
 class Close extends HttpEventOnClose{
