@@ -1,14 +1,18 @@
 <?php
-namespace app\homepage;
+namespace app\events\http\homepage;
 
 use com\github\tncrazvan\catpaw\http\HttpEvent;
 use com\github\tncrazvan\catpaw\http\HttpEventHandler;
 use com\github\tncrazvan\catpaw\http\HttpEventOnClose;
 use com\github\tncrazvan\catpaw\tools\ServerFile;
+use HttpMethodGet;
+use HttpMethodPost;
 
-class HelloPage extends HttpEventHandler implements HttpMethodGet{
+class HelloPage extends HttpEventHandler 
+    implements HttpMethodGet,HttpMethodPost{
     private string $test;
     private HttpEvent $e;
+    private static int $i = 0;
     public function __construct(string $test, HttpEvent $e, ?HttpEventOnClose &$onClose = null){
         $this->test = $test;
         $this->e=$e;
@@ -16,8 +20,16 @@ class HelloPage extends HttpEventHandler implements HttpMethodGet{
             $onClose = new Close();
     }
     public function get(){
-        echo "Received test param:$this->test\n";
         return ServerFile::response($this->e,$this->e->listener->so->webRoot,"index.html");
+    }
+    public function post(){
+        yield;
+        self::$i++;
+        yield;
+        self::$i++;
+        yield;
+        self::$i++;
+        return self::$i++;
     }
 }
 
